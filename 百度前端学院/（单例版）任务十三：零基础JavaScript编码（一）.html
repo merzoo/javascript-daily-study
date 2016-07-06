@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IFE JavaScript Task 01</title>
+</head>
+<body>
+	<label>请输入苏州今天的空气质量：<input id="aqi-input" type="text"></label>
+	<button id="button">确认填写</button>
+
+	<div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
+
+
+<script>
+window.onload = function(){
+	var Weather = {
+		init:function(){
+			this.render();
+			this.bind();
+		},
+		id:function(id){
+			return document.getElementById(id);
+		},
+		render:function(){
+			this.btn = this.id("button");	
+		},
+		bind:function(){
+			console.log(this.btn);
+			var _this = this;
+			this.btn.onclick = function(){
+				console.log(1);
+				_this.test();
+			}
+		},
+		test:function(){
+			this.ipt = this.id("aqi-input").value;
+			this.span = this.id("aqi-display");
+			if(this.ipt != ""){
+				this.span.innerText = this.ipt;
+			}else{
+				this.span.innerText = "尚未录入";
+			}
+		}
+	}
+	Weather.init();
+
+}
+	
+
+</script>
+</body>
+</html>
