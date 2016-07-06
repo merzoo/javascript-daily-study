@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		给function加上一个拓展方法的方法
+		*/
+		/*Function.prototype.addMethod = function(name, fn){
+			this[name] = fn;
+		}
+		var method = function(){};
+
+		method.addMethod("SayHello", function(){
+			alert("hello!");
+			return this;
+		})
+
+		method.addMethod("SayGoodBye", function(){
+			alert("goodBye!");
+			return this;
+		})
+
+		method.SayHello();
+		method.SayGoodBye();*/
+
+		/*
+		在以上基础上添加一个链式添加方法
+		*/
+
+		/*Function.prototype.addMethod = function(name, fn){
+			this[name] = fn;
+			return this;
+		}
+		var methods = function(){};
+
+		methods.addMethod("SayHello", function(){
+			alert("hello!");
+			return this;
+		}).addMethod("SayGoodBye", function(){		//链式添加
+			alert("goodBye!");
+			return this;
+		})
+
+		methods.SayHello().SayGoodBye(); //链式调用
+		*/
+
+		Function.prototype.addMethod = function(name, fn){
+			this.prototype[name] = fn;
+			return this;
+		}
+		var methods = function(){};
+		methods.addMethod("SayHello", function(){
+			alert("hello!");
+		})
+		console.log(methods);
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style>
+		.list li{
+			width:100px;
+			height:30px;
+			background: blue;
+			margin-top: 10px;
+		}
+		.list .selected{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<ul class="list">
+		<li class="selected"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+	$(function(){
+		var mList = $(".list li");
+
+		mList.click(function(){
+			var hasClass = $(this).hasClass("selected");
+			$(this)[hasClass?"removeClass":"addClass"]('selected');
+		})
+	})
+	
+	</script>
+</body>
+</html>
