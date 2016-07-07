@@ -15,24 +15,25 @@
 window.onload = function(){
 	var Weather = {
 		init:function(){
-			this.render();
+			this.btn = this.id("button");
 			this.bind();
 		},
 		id:function(id){
 			return document.getElementById(id);
 		},
-		render:function(){
-			this.btn = this.id("button");	
+		render:function(){			
+			this.ipt = this.id("aqi-input").value;
+			this.span = this.id("aqi-display");	
 		},
 		bind:function(){
 			var _this = this;
 			this.btn.onclick = function(){
+				_this.render();
 				_this.test();
 			}
 		},
 		test:function(){
-			this.ipt = this.id("aqi-input").value;
-			this.span = this.id("aqi-display");
+			
 			if(this.ipt != ""){
 				this.span.innerText = this.ipt;
 			}else{
