@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-controller="mainCtrl as ctrl">
+	<h1>{{ctrl.message}}</h1>
+	<button ng-click="ctrl.changeMessage()">changeMessage</button>
+<script>
+	angular.module('myApp',[])
+		.controller('mainCtrl',[function(){
+			var self = this;
+			self.message = "hello";
+			self.changeMessage = function(){
+				self.message = "I'm changed!"
+			}
+		}]);
+</script>
+</body>
+</html>

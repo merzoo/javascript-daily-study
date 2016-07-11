@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>case3</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+	<div ng-repeat="(author, note) in ctrl.notes">
+		<span class="label">{{note.label}}</span>
+		<span class="author" ng-bind="author"></span>
+	</div>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script>
+	angular.module('myApp',[])
+		.controller('MainCtrl',[function(){
+			var self = this;
+			self.notes = {
+				shyam: {
+					id: 1,
+					label: 'First Note',
+					done: false
+				},
+				Misko: {
+					id: 3,
+					label: 'Finished Third Note',
+					done: true
+				},
+				brad: {
+					id: 2,
+					label: 'Second Note',
+					done: false
+				}
+			};
+		}])
+	</script>
+</body>
+</html>

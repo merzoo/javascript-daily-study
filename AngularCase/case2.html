@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>case 2</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-controller="mainCtrl as ctrl">
+	 <ul ng-repeat="note in ctrl.notes">
+	 	<li>序号：{{note.index}}，姓名：{{note.name}}，年龄{{note.age}}</li>
+	 </ul>
+	<button ng-click="ctrl.cheeck()">cheeck</button>
+	 <script>
+	 angular.module('myApp',[])
+	 	.controller('mainCtrl',[function(){
+	 		var self = this;
+	 		self.notes = [
+	 			{index: 1, name: "Gjl", age: 23},
+	 			{index: 2, name: "xy", age: 22},
+	 			{index: 3, name: "tj", age: 22}
+	 		];
+	 		self.cheeck = function(){
+	 			alert(1);
+	 		}
+	 	}])
+	 </script>
+</body>
+</html>
