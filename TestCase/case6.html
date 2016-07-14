@@ -1,0 +1,26 @@
+<script src="assert.js"></script>
+<script>
+	//4.8
+	var store = {
+		nextId: 1,
+
+		cache: {},
+
+		add: function(fn) {
+			if (!fn.id) {
+				fn.id = store.nextId++;
+				return !!(store.cache[fn.id] = fn);
+			}
+		}
+	}
+
+	// function ninja(){};
+	// assert(store.add(ninja), "Ninja is here!");
+	// assert(!store.add(ninja), "Ninja was added!")
+
+
+	//4.9
+	var elem = {
+		len
+	}
+</script>

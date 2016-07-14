@@ -1,0 +1,36 @@
+<script src="assert.js"></script>
+<script>
+/*
+ 内联函数的威力
+**/
+	var ninja = {
+		chirp: function signal(n){
+			return n > 1 ? signal(n-1) + "-chirp" : "chirp";
+		}
+	};
+
+	assert(ninja.chirp(3) == "chirp-chirp-chirp",
+			"Works as wee would expect it to!");
+
+	var samurai = {
+		chirp: ninja.chirp
+	};
+
+
+	ninja = {};
+
+	assert(samurai.chirp(3) == "chirp-chirp-chirp",
+			"The method correctly calls itself");
+
+
+	var ninja1 = function myNinja(){
+		assert(ninja1 == myNinja,
+				"This function is named two things at once!");
+	};
+	ninja1();
+
+	assert(typeof myNinja == "undefined",
+			"But myNinja isn't defined outside of the function!")  
+
+
+</script>
