@@ -1,0 +1,13 @@
+<script src="assert.js"></script>
+<script>
+	function addMethod(obj, name, fn){
+        var old = obj[name];
+        obj[name] = function(){
+            if(fn.length = arguments.length){
+                retrun fn.apply(this, arguments);
+            }else if(typeof old == 'function'){
+                return old.apply(this, arguments);
+            }
+        }
+    }
+</script>

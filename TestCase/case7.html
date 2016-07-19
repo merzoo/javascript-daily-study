@@ -1,18 +1,18 @@
 <script src="assert.js"></script>
 <script>
-	var outerValue = "ninja";
+	var outerValue = 'ninja';
 	var later;
 
-	 function outerFunction(){
-	 	var innerValue = "samurai";
-	 	function innerFunction(){
-	 		assert(outerValue,"I can see the ninja");
-	 		assert(innerValue,"I can see the samurai");
-	 	}
-	 	later = innerFunction;
-	 }
+	function outerFunction(){
+		var innerValue = 'samurai';
 
-	 outerFunction();
+		function innerFunction(){
+			assert(outerValue, "I can see the ninja.");
+			assert(innerValue, "I can see the samurai");
+		}
+		later = innerFunction;
+	}
 
-	 later();
+	outerFunction();
+	later();
 </script>

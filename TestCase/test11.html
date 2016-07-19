@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="first"></div>
+	<script>
+	var elem = {
+		length: 0,
+		add: function(elem){
+			[].push.call(this, elem);
+		},
+		gather: function(id){
+			this.add(document.getElementById(id));
+		}
+	}
+
+
+	elem.gather("first");
+	console.log(elem);
+	</script>
+</body>
+</html>

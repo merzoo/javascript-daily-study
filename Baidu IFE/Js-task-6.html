@@ -15,55 +15,50 @@
 </head>
 <body>
   <div>
-    <input type="text" />
+    <input type="text" id="ipt"/>
     <button id="left-in">左侧入</button>
     <button id="right-in">右侧入</button>
     <button id="left-out">左侧出</button>
     <button id="right-out">右侧出</button>
   </div>
   <div id="result"></div>
+
   <script>
-    $ = function (el) { return document.querySelector(el); };
-    var data = [];
-    function render() {
-      $('#result').innerHTML =
-        data.map(function(d) { return "<div>" + d + "</div>"; })
-          .join('');
+
+    function $(id){
+      return document.getElementById(id);
     }
-    function deal(func, succ) {
-      var args = [].slice.call(arguments, 2);
-      return function(e) {
-        try {
-          var arg = args.map(function(item) {
-            return typeof item === "function" ? item(e) : item;
-          });
-          var result = func.apply(data, arg);
-          if (succ != null) {
-            succ(result);
-          }
-        } catch (ex) {
-          alert(ex.message);
-        }
-        render();
-      };
+    
+    $("left-in").onclick = function(){
+      var ipt = $("ipt").value;
+      var odiv = document.createElement("div");
+      odiv.innerText = ipt;
+      $("result").insertBefore(odiv,$("result").children[0]);
     }
-    function getInputValue() {
-      var numStr = $('input').value;
-      if (!validate(numStr)) throw new Error('input error');
-      return parseInt(numStr);
+
+    $("right-in").onclick = function(){
+      var ipt = $("ipt").value;
+      var odiv = document.createElement("div");
+      odiv.innerText = ipt;
+      $("result").appendChild(odiv);
     }
-    function getClickIndex(e) {
-      var node = e.target;
-      return [].indexOf.call(node.parentNode.children, node);
+
+    $("left-out").onclick = function(){
+      var val = $("result").children[0].innerText;
+      $("result").removeChild($("result").children[0]);
+      alert(val);
     }
-    function validate(str) {
-      return /^\d+$/.test(str);
+
+    $("right-out").onclick = function(){
+      var val = $("result").children[0].innerText;
+      var len = $("result").children.length;
+      $("result").removeChild($("result").children[len-1]);
+      alert(val);
     }
-    $('#left-in').onclick = deal([].unshift, null, getInputValue);
-    $('#right-in').onclick = deal([].push, null, getInputValue);
-    $('#left-out').onclick = deal([].shift, window.alert);
-    $('#right-out').onclick = deal([].pop, window.alert);
-    $('#result').onclick = deal([].splice, null, getClickIndex, 1);
+
+    $("result").onclick = function(e){
+      this.removeChild(e.target);
+    }
   </script>
 </body>
 </html>

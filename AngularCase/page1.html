@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="myApp">
+	<ul>
+		<li><a href="#/">首页</a></li>
+		<li><a href="#/computers">电脑</a></li>
+		<li><a href="#/printers">打印机</a></li>
+		<li><a href="#/blabla">其他</a></li>
+	</ul>
+
+	<div ng-view></div>
+
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<script src="cdn.bootcss.com/angular-ui-router/1.0.0-beta.1/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+
+
+    <script>
+    	var app = angular.module("myApp", ['ui.router'])
+    		.config(["$stateProvider","$urlRouterProvider",function($stateProvider,$urlRouterProvider){
+    			$stateProvider
+						.state('computer',{
+							url: "/computer",
+							templateUrl: 'page2.html',
+
+						})
+				$urlRouterProvider.otherwise('/');
+    		}])
+    </script>
+</body>
+</html>
