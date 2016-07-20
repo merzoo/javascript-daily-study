@@ -35,6 +35,31 @@
     }
 
     initEvent();
+
+
+
+//////////////////////////////////////
+   function clone(src){
+       var newSrc = {}, i;
+       for(i in src){
+           newSrc[i] = clone(src[i]);
+       }
+       return newSrc;
+   }
+
+
+    var a = {
+        f: 1,
+        g: {
+            t: [1,2],
+            o: {a:454}
+        }
+    }
+    var A = clone(a);
+    console.log(A);
+
+    A.f = 2;
+    console.log(a);
 </script>
 </body>
 </html>

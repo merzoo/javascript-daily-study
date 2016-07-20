@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            padding:200px;
+        }
+        a {
+            text-align:center;
+            display: block;
+            margin: 0 auto;
+            width:1000px;
+            height:400px;
+            border: 1px solid black;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            margin: 50px;
+            font-size: 30px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            transition: all 2s;
+        }
+        #shitou{
+            background:red;
+        }
+        #jiandao{
+            background:green;
+        }
+        #bu{
+            background:darkmagenta;
+        }
+        .click{
+            transform:rotate(720deg);
+        }
+    </style>
+</head>
+<body>
+    <a>
+        <div id="shitou">石头</div>
+        <div id="jiandao">剪刀</div>
+        <div id="bu">布</div>
+    </a>
+    <span>1</span>
+    <span>1</span>
+    <span>1</span>
+    <script>
+
+        var oDiv = document.getElementsByTagName("div");
+        for(var i = 0, len = oDiv.length; i < len; i++){
+            (function (i) {
+                oDiv[i].onclick = function(){
+                    if(oDiv[i].className === "click"){
+                        oDiv[i].className = "";
+                    }else{
+                        oDiv[i].className = "click";
+                    }
+                    var pc = random();
+                    console.log(pc);
+                    var pc0 = pc[0];
+                    var pc1 = pc[1];
+                    var person = oDiv[i].id;
+                    document.getElementById("jiandao").innerText = compare(person, pc0);
+                    document.getElementById("bu").innerText = pc1;
+                }
+            })(i)
+
+        }
+
+
+        function random(){
+            var arr = ["shitou","jiandao","bu"];
+            var arr1 = ["石头","剪刀","布"];
+            var i = Math.floor(Math.random()*3);//0-2区间随机数
+            return [arr[i],arr1[i]];
+        }
+
+        function compare(a, b){
+            var text = "你输了！";
+            if(a === b){
+                return  text = "打平了！";
+            }
+            if(a === "bu" && b!=='jiandao'){
+                return  text = "你赢了！";
+            }
+            if(a === "shitou" && b!=='bu'){
+                return  text = "你赢了！";
+            }
+            if(a === "jiandao"&& b!=='shitou'){
+                return   text = "你赢了！";
+            }
+            return text;
+        }
+    </script>
+</body>
+</html>
