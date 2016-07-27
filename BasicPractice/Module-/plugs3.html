@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="J_input">
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    var TextCount = (function(){
+        //私有方法
+        var _bind = function(that){
+            that.input.on('keyup',function(){
+                that.render();
+            });
+        }
+
+        var _getNum = function(that){
+            return that.input.val().length;
+        }
+
+        var TextCountFn = function(config){
+
+        }
+
+        TextCountFn.prototype.init = function(config){
+            this.input = $(config.id);
+            _bind(this);
+
+            return this;
+        }
+
+        TextCountFn.prototype.render = function(){
+            var num = _getNum(this);
+
+            if($("container").length == 0){
+                this.input.after('<span id="container"></span>')；
+            }
+
+            $("container").text(num+"个字")
+        }
+
+        return TextCountFn;
+    })();
+
+    $(function(){
+        new TextCount().init({id: '#J_input'}).render();
+    })
+</script>
+</body>
+</html>

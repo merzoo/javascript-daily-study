@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="J_input">
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+    $(function(){
+        var input = $("#J_input");
+        function getNum(obj){
+            return obj.val().length;
+        }
+
+        function render(){
+            var num = getNum(input);
+
+            if($("#container").length == 0){
+                input.after('<span id="container"></span>');
+            }
+
+            $("#container").text(num+"个字");
+        }
+
+        input.on('keyup',function(){
+            render();
+        });
+
+        render();
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="J_input">
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    var textCount = {
+        input: null,
+        init: function(config){
+            this.input = $(config.id);
+            this.bind();
+
+            return this;
+        },
+        bind: function(){
+            var self = this;
+            this.input.on('keyup',function(){
+                self.render();
+            })
+        },
+        getNum: function(){
+            return this.input.val().length;
+        },
+        render: function(){
+            var num = this.getNum();
+
+            if($("#container").length == 0){
+                this.input.after('<span id="container"></span>');
+            }
+
+            $("#container").text(num+'个字');
+        }
+    }
+
+    $(function(){
+        textCount.init({id: '#J_input'}).render();
+    })
+
+</script>
+</body>
+</html>
