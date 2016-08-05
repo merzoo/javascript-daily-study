@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="640" height="360"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        if(canvas.getContext){
+            var context = canvas.getContext("2d");
+            //设置颜色
+            context.fillStyle = 'rgb(255,0,0)';
+            //从坐标(20,30)开始，画一个64X36大小的矩形
+            context.fillRect(20,30,64,36);
+        }
+    </script>
+</body>
+</html>
