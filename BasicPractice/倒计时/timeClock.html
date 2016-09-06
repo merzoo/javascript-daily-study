@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timeClock</title>
+</head>
+<body>
+    <p id="time"></p>
+
+
+    <script>
+        var time = document.querySelector('#time');
+
+        function countDown(endtime){
+            const now = new Date().getTime();
+            console.log(now);
+            const end = new Date(endtime).getTime();
+            console.log(end);
+            remian = (end - now)/1000;
+            console.log(remian);
+            d = parseInt(remian/3600/24);
+            h = parseInt(remian/3600%24);
+            m = parseInt(remian/60%60);
+            s = parseInt(remian%60);
+
+            return {
+                day: d,
+                hour: h,
+                minitues: m,
+                seconds: s
+            }
+        }
+
+        console.log(countDown("2017-8-8").day);
+    </script>
+</body>
+</html>
