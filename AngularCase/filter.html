@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+	<input type="text" ng-model="ipt.name">
+    <pre>{{ipt | json}}</pre>
+	<p>{{change}}</p>
+	<p>{{ipt | json}}</p>
+	<script>
+		angular.module('myApp', []).controller('myController', ['$scope', function($scope){
+			$scope.ipt = {
+				name: '张三',
+				age: 18,
+				generay: {
+					name: "lisi",
+					age: 16
+				},
+				pick: [
+					{a: 1},
+					{b: 2}
+				]
+			}
+
+			$scope.change = JSON.stringify($scope.ipt);
+		}])
+	</script>
+</body>
+</html>

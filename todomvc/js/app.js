@@ -6,16 +6,37 @@
 	* Description
 	*/
 	var app = angular.module('MyTodoMvc', [])
-	app.controller('MainController', ['$scope', function($scope){
+	app.controller('MainController', ['$scope', '$location', function($scope,$location){
 		//文本框需要一个值
 		$scope.text = '';
 		//任务列表需要一个数组
 		//每一个任务的结构{ id: 1, text: '学习', completed: true}
 		$scope.todos = [
-			{ id: Math.random(), text: '学习', completed: false},
+			{ id: Math.random(), text: '学习', completed: true},
 			{ id: Math.random(), text: '睡觉', completed: false},
 			{ id: Math.random(), text: '打豆豆', completed: false}
 		];
+
+		//选择器
+		$scope.selector = {};
+		$scope.$location = $location;
+
+		//监视哈希值变化
+		$scope.$watch('$location.path()', function(now, old){
+			console.log(now);
+			switch(now){
+				case '/active':
+					$scope.selector = {completed: false};
+					break;
+				case '/completed':
+					$scope.selector = {completed: true};
+					break;
+				default:
+					$scope.selector = {};
+			}
+		})
+
+		
 
 		//双击编辑
 		$scope.currentEditingId = -1;
@@ -32,6 +53,10 @@
 
 		//添加todo
 		$scope.add = function(){
+ 			if($scope.text === ''){
+ 				return;
+ 			}
+
 			$scope.todos.push({
 				id: Math.random(),
 				text: $scope.text,
