@@ -36,7 +36,12 @@
 			}
 		})
 
-		
+		//比较函数
+		$scope.compare = function(source, target){
+			console.log(source);
+			console.log(target);
+			return source === target;
+		}
 
 		//双击编辑
 		$scope.currentEditingId = -1;

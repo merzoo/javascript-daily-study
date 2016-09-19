@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>manu-filter</title>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+	<h1><input type="text" ng-model="weight"></h1>
+	<p>{{weight | bong }}</p>
+
+	<script>
+		angular.module('myApp', []).filter('bong', function(){
+			return function(input){
+				if(input >= 10){
+					return "太重了！";
+				}else{
+					return "太轻了！"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

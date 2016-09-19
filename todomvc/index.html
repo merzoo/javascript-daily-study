@@ -22,12 +22,12 @@
 				<label for="toggle-all">Mark all as complete</label>
 				<ul class="todo-list">
 					
-					<li ng-repeat="todo in todos | filter: selector"  ng-class="{completed: todo.completed, editing: todo.id === currentEditingId}">
+					<li ng-repeat="todo in todos | filter: selector : compare"  ng-class="{completed: todo.completed, editing: todo.id === currentEditingId}">
 						<div class="view">
 							<input class="toggle" type="checkbox" checked ng-model="todo.completed">
 							<label ng-dblclick="editing(todo)" ng->{{todo.text}}</label>
 							<button class="destroy" ng-click="remove(todo)"></button>
-						</div>
+						</div>	 			 
 						<form ng-submit="save()">
 							<input class="edit" ng-model="todo.text">
 						</form>
@@ -42,13 +42,13 @@
 				<!-- Remove this if you don't implement routing -->
 				<ul class="filters">
 					<li>
-						<a ng-class="{selected: $location.path() === '/'}" href="#/" >All</a>
+						<a ng-class="{selected: selector.completed === undefined}" href="#/" >All</a>
 					</li>
 					<li>
-						<a ng-class="{selected: $location.path() === '/active'}" href="#/active">Active</a>
+						<a ng-class="{selected: selector.completed === false}" href="#/active">Active</a>
 					</li>
 					<li>
-						<a ng-class="{selected: $location.path() === '/completed'}" href="#/completed">Completed</a>
+						<a ng-class="{selected: selector.completed === true}" href="#/completed">Completed</a>
 					</li>
 				</ul>
 				<!-- Hidden if no completed items are left ↓ -->
