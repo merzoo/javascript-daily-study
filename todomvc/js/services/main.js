@@ -1,8 +1,6 @@
 /*
- * @Author: iceStone
- * @Date:   2016-02-16 17:01:17
- * @Last Modified by:   iceStone
- * @Last Modified time: 2016-02-16 17:52:08
+ * @Author: merzoo
+ * @Date:   2016-09-26 16:54:35
  */
 
 (function(angular) {
